@@ -18,4 +18,6 @@ function fetchCountries(countryName) {
     return fetch(url).then(country => country.json());
 }
 
-
+function onInput(event) {
+    
+}
