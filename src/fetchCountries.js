@@ -1,5 +1,7 @@
-function fetchCountries(countryName) {
-    const countriesUrl = `${mailUrl}/name/{countryName}`;
-    return fetch(url).then(country => country.json());
+function fetchCountries(name) {
+    const mainUrl = 'https://restcountries.com/v3.1/';
+    const url = `${mainUrl}/name/${name}?fields=name,capital,flags,population,languages`;
+    return fetch(url).then(response => response.json());
 }
-fetchCountries(peru);
+
+export default { fetchCountries };
