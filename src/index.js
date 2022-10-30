@@ -3,19 +3,15 @@ import Notiflix from 'notiflix';
 import "notiflix/dist/notiflix-3.2.5.min.css";
 
 import {fetchCountries} from './fetchCountries';
-//const { name, capital, flags, population, languages } = fetchCountries;
 
 const debounce = require('lodash.debounce');
 
 const DEBOUNCE_DELAY = 300;
 let searchCountry = '';
 
-
 const inputEl = document.querySelector('input#search-box');
 const countryListEl = document.querySelector('.country-list');
 const countryInfoEl = document.querySelector('.country-info');
-
-//countryListEl.style.listStyle = 'none';
 
 inputEl.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 
@@ -34,11 +30,6 @@ function onInput(event) {
     }
     ).catch((error) => onError()).finally(resetMarkup());
 };
-/*    fetchCountries(searchCountry).then((country) => {
-        console.log(country);
-        countryInfoEl.insertAdjacentHTML('beforeend', createCountryInfo(country[0]))
-    }).catch((error) => Notiflix.Notify.failure('error'));*/
-
 
 function onError() {
     Notiflix.Notify.failure('Oops, there is no country with that name');
@@ -49,7 +40,6 @@ function resetMarkup() {
     countryInfoEl.innerHTML = '';
     countryListEl.innerHTML = '';
 }
-
 
 function createCountriesList(countries) {
     return countries.map((country) =>  `<li class="list-item">
