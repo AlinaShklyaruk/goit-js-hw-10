@@ -15,6 +15,8 @@ const inputEl = document.querySelector('input#search-box');
 const countryListEl = document.querySelector('.country-list');
 const countryInfoEl = document.querySelector('.country-info');
 
+//countryListEl.style.listStyle = 'none';
+
 inputEl.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 
 function onInput(event) {
@@ -49,18 +51,18 @@ function resetSearch() {
 
 
 function createCountriesList(countries) {
-    return countries.map((country) =>  `<li>
+    return countries.map((country) =>  `<li class="list-item">
     <img src="${country.flags.svg}" alt="${country.name.common}" width="36"/>
-    <p>${country.name.official}</p>
-    </li>`).join();
+    <p style="margin-left: 10px">${country.name.official}</p>
+    </li>`).join('');
 }
 
 function createCountryInfo(country) {
    return `<img src="${country.flags.svg}" alt="${country.name.official}" width="150"/>
     <h1>${country.name.official}</h1>
     <ul>
-    <li><h2>Capital:</h2><p>${country.capital}</p></li>
-    <li><h2>Population</h2><p>${country.population}</p></li>
-    <li><h2>Languages</h2><p>${Object.values(country.languages)}</p></li>
+    <li class="list-item"><h2>Capital:&nbsp; </h2><p class="list-item-text">${country.capital}</p></li>
+    <li class="list-item"><h2>Population:&nbsp; </h2><p class="list-item-text">${country.population}</p></li>
+    <li class="list-item"><h2>Languages:&nbsp; </h2><p class="list-item-text">${Object.values(country.languages)}</p></li>
     </ul>`;
 }
