@@ -26,25 +26,26 @@ function onInput(event) {
         if (country.length === 1) {
             countryInfoEl.innerHTML = createCountryInfo(country[0]);
         } else if (country.length >= 2 && country.length <= 10) {
-
             countryListEl.innerHTML = createCountriesList(country);
         } else if (country.length > 10) {
             Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
         }
-
-    }).catch((error) => onError);
+        
+    }
+    ).catch((error) => onError()).finally(resetMarkup());
+};
 /*    fetchCountries(searchCountry).then((country) => {
         console.log(country);
         countryInfoEl.insertAdjacentHTML('beforeend', createCountryInfo(country[0]))
     }).catch((error) => Notiflix.Notify.failure('error'));*/
-}
+
 
 function onError() {
     Notiflix.Notify.failure('Oops, there is no country with that name');
     inputEl.textContent = '';
 }
 
-function resetSearch() {
+function resetMarkup() {
     countryInfoEl.innerHTML = '';
     countryListEl.innerHTML = '';
 }
